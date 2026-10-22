@@ -1,63 +1,32 @@
-# TaskForge Todo List API Site
+# To-Do List
 
-TaskForge is a complete Todo List API website built for the project brief. It includes
-a responsive task dashboard, API documentation, admin panel, signed-token auth, task
-CRUD, categories, comments, and JSON-file persistence.
+A simple front-end to-do app made with plain HTML, CSS, and JavaScript.
 
-## Run the Site
+## Run It
 
-```bash
-npm.cmd start
-```
-
-Then open:
+Open this file in your browser:
 
 ```text
-http://localhost:3000
+index.html
 ```
 
-Demo admin account:
+No server or install step is needed.
+
+## Features
+
+- Add tasks
+- Mark tasks as done
+- Edit or delete tasks
+- Filter by all, active, or done
+- Search tasks
+- Clear completed tasks
+- Save tasks in browser localStorage
+
+## Files
 
 ```text
-Email: admin@taskforge.dev
-Password: admin123
+index.html
+styles.css
+app.js
+README.md
 ```
-
-The app can also be opened directly through `index.html`. In that mode it uses
-browser localStorage and shows `Static demo mode`.
-
-## Project Structure
-
-```text
-frontend-foundation/
-  index.html        Dashboard and task workspace
-  projects.html     API documentation
-  contact.html      Admin panel
-  styles.css        Shared responsive styling
-  app.js            Browser app and API client
-  server.js         Local Node.js API and static server
-  package.json      npm scripts
-  data/db.json      Created automatically on first server run
-```
-
-## API Routes
-
-- `GET /api/health`
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `GET /api/auth/me`
-- `GET /api/tasks`
-- `POST /api/tasks`
-- `PATCH /api/tasks/:id`
-- `DELETE /api/tasks/:id`
-- `GET /api/categories`
-- `POST /api/categories`
-- `POST /api/tasks/:id/comments`
-- `GET /api/admin/users`
-
-## Notes
-
-This build uses only Node.js built-in modules so it runs immediately in this
-workspace. For production, replace JSON-file persistence with MongoDB/Mongoose,
-set a strong `JWT_SECRET`, serve behind HTTPS, and add audit logging for role
-changes.
