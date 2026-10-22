@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Responsive grid preview</title>
+  <desc id="desc">Cards moving from a single column to a three column layout.</desc>
+  <rect width="960" height="600" fill="#eef5f1"/>
+  <rect x="80" y="85" width="210" height="355" rx="24" fill="#17202a"/>
+  <rect x="112" y="125" width="146" height="48" rx="12" fill="#ffcf75"/>
+  <rect x="112" y="210" width="146" height="52" rx="12" fill="#ffffff"/>
+  <rect x="112" y="300" width="146" height="52" rx="12" fill="#ffffff"/>
+  <rect x="380" y="105" width="500" height="300" rx="24" fill="#ffffff"/>
+  <rect x="420" y="155" width="120" height="170" rx="16" fill="#2457a6"/>
+  <rect x="570" y="155" width="120" height="170" rx="16" fill="#2d6a4f"/>
+  <rect x="720" y="155" width="120" height="170" rx="16" fill="#b84a62"/>
+  <rect x="420" y="360" width="420" height="18" rx="7" fill="#a6b1ba"/>
+  <path d="M310 275h48" stroke="#c68a1c" stroke-width="16" stroke-linecap="round"/>
+  <path d="M345 245l32 30-32 30" fill="none" stroke="#c68a1c" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

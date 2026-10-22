@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Frontend Foundations</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">Frontend Foundations</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <p class="eyebrow">Contact page</p>
+      <h1>Practice form layout and accessible labels.</h1>
+      <p>
+        This page uses common form controls, clear labels, and responsive spacing
+        so it remains comfortable to complete on smaller screens.
+      </p>
+    </section>
+
+    <section class="section form-section">
+      <form class="contact-form" action="#" method="post">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name">
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com">
+        </div>
+
+        <div class="form-row">
+          <label for="topic">Topic</label>
+          <select id="topic" name="topic">
+            <option>HTML practice</option>
+            <option>CSS styling</option>
+            <option>Responsive layout</option>
+            <option>Git workflow</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Write your message"></textarea>
+        </div>
+
+        <button class="button primary" type="submit">Send message</button>
+      </form>
+
+      <aside class="resource-panel" aria-labelledby="resources-title">
+        <h2 id="resources-title">Study focus</h2>
+        <p>
+          Keep practicing the same loop: write semantic markup, style it with
+          reusable CSS, test the layout, and commit the finished change.
+        </p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Frontend Foundations. Built with semantic HTML and CSS.</p>
+  </footer>
+</body>
+</html>
