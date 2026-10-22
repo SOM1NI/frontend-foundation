@@ -3,73 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Frontend Foundations</title>
+  <title>Admin | TaskForge</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="index.html">Frontend Foundations</a>
+      <a class="brand" href="index.html">
+        <span class="brand-mark">TF</span>
+        <span>TaskForge</span>
+      </a>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html" aria-current="page">Contact</a>
+        <a href="index.html">Dashboard</a>
+        <a href="projects.html">API Docs</a>
+        <a href="contact.html" aria-current="page">Admin</a>
       </div>
     </nav>
   </header>
 
   <main>
     <section class="page-intro">
-      <p class="eyebrow">Contact page</p>
-      <h1>Practice form layout and accessible labels.</h1>
+      <p class="eyebrow">Admin panel</p>
+      <h1>Control accounts, categories, content hygiene, and API readiness.</h1>
       <p>
-        This page uses common form controls, clear labels, and responsive spacing
-        so it remains comfortable to complete on smaller screens.
+        The admin surface mirrors the backend permissions model: members manage their
+        own tasks, managers coordinate team queues, and admins oversee every workspace.
       </p>
+    </section>
+
+    <section class="section admin-grid">
+      <article class="admin-card">
+        <div class="admin-card-header">
+          <span class="admin-icon">A</span>
+          <div>
+            <h2>Role Matrix</h2>
+            <p>Route access by user scope.</p>
+          </div>
+        </div>
+        <table class="role-table">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Tasks</th>
+              <th>Users</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Member</td>
+              <td>Own tasks</td>
+              <td>Profile</td>
+            </tr>
+            <tr>
+              <td>Manager</td>
+              <td>Team tasks</td>
+              <td>Read team</td>
+            </tr>
+            <tr>
+              <td>Admin</td>
+              <td>All tasks</td>
+              <td>Full audit</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="admin-card">
+        <div class="admin-card-header">
+          <span class="admin-icon">C</span>
+          <div>
+            <h2>Category Control</h2>
+            <p>Keep work grouped and searchable.</p>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span>Planning</span>
+          <span>Development</span>
+          <span>Review</span>
+          <span>Operations</span>
+          <span>Personal</span>
+        </div>
+      </article>
+
+      <article class="admin-card">
+        <div class="admin-card-header">
+          <span class="admin-icon">M</span>
+          <div>
+            <h2>Moderation Queue</h2>
+            <p>Review comments before they become noise.</p>
+          </div>
+        </div>
+        <ul class="queue-list">
+          <li>
+            <strong>Blocked deployment note</strong>
+            <span>Needs admin acknowledgement</span>
+          </li>
+          <li>
+            <strong>Late sprint update</strong>
+            <span>Manager review pending</span>
+          </li>
+          <li>
+            <strong>Duplicate task comment</strong>
+            <span>Ready to merge</span>
+          </li>
+        </ul>
+      </article>
+
+      <article class="admin-card install-card">
+        <div class="admin-card-header">
+          <span class="admin-icon">S</span>
+          <div>
+            <h2>Local Setup</h2>
+            <p>Run the complete site and API.</p>
+          </div>
+        </div>
+        <ol class="setup-list">
+          <li>Open a terminal in <code>frontend-foundation</code>.</li>
+          <li>Run <code>npm.cmd start</code>.</li>
+          <li>Visit <code>http://localhost:3000</code>.</li>
+          <li>Log in with <code>admin@taskforge.dev</code> and <code>admin123</code>.</li>
+        </ol>
+      </article>
     </section>
 
     <section class="section form-section">
       <form class="contact-form" action="#" method="post">
         <div class="form-row">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name">
+          <label for="workspace-name">Workspace name</label>
+          <input id="workspace-name" name="workspace-name" type="text" value="Product Operations">
         </div>
 
         <div class="form-row">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com">
-        </div>
-
-        <div class="form-row">
-          <label for="topic">Topic</label>
-          <select id="topic" name="topic">
-            <option>HTML practice</option>
-            <option>CSS styling</option>
-            <option>Responsive layout</option>
-            <option>Git workflow</option>
+          <label for="default-role">Default role</label>
+          <select id="default-role" name="default-role">
+            <option>Member</option>
+            <option>Manager</option>
+            <option>Admin</option>
           </select>
         </div>
 
         <div class="form-row">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6" placeholder="Write your message"></textarea>
+          <label for="retention">Completed task retention</label>
+          <select id="retention" name="retention">
+            <option>90 days</option>
+            <option>180 days</option>
+            <option>1 year</option>
+          </select>
         </div>
 
-        <button class="button primary" type="submit">Send message</button>
+        <button class="button primary" type="submit">Save settings</button>
       </form>
 
       <aside class="resource-panel" aria-labelledby="resources-title">
-        <h2 id="resources-title">Study focus</h2>
-        <p>
-          Keep practicing the same loop: write semantic markup, style it with
-          reusable CSS, test the layout, and commit the finished change.
-        </p>
+        <h2 id="resources-title">Production checklist</h2>
+        <ul class="checklist compact-list">
+          <li>Set a strong <code>JWT_SECRET</code>.</li>
+          <li>Move persistence to MongoDB with Mongoose models.</li>
+          <li>Serve behind HTTPS.</li>
+          <li>Add audit logs for role changes.</li>
+        </ul>
       </aside>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Frontend Foundations. Built with semantic HTML and CSS.</p>
+    <p>&copy; 2026 TaskForge. Admin controls for task-management teams.</p>
   </footer>
 </body>
 </html>

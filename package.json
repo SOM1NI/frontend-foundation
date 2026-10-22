@@ -1,0 +1,19 @@
+{
+  "name": "taskforge-todo-api-site",
+  "version": "1.0.0",
+  "description": "A complete Todo List API website with Node.js auth, task CRUD, categories, comments, and admin views.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check app.js"
+  },
+  "keywords": [
+    "todo",
+    "nodejs",
+    "api",
+    "task-management",
+    "jwt"
+  ],
+  "author": "",
+  "license": "MIT"
+}

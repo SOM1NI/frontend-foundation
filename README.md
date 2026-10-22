@@ -1,54 +1,63 @@
-# Frontend Foundations
+# TaskForge Todo List API Site
 
-A beginner-friendly front-end practice project for building structured HTML
-pages, styling them with CSS, designing responsive layouts, and tracking work
-with Git.
+TaskForge is a complete Todo List API website built for the project brief. It includes
+a responsive task dashboard, API documentation, admin panel, signed-token auth, task
+CRUD, categories, comments, and JSON-file persistence.
+
+## Run the Site
+
+```bash
+npm.cmd start
+```
+
+Then open:
+
+```text
+http://localhost:3000
+```
+
+Demo admin account:
+
+```text
+Email: admin@taskforge.dev
+Password: admin123
+```
+
+The app can also be opened directly through `index.html`. In that mode it uses
+browser localStorage and shows `Static demo mode`.
 
 ## Project Structure
 
 ```text
 frontend-foundation/
-  index.html
-  projects.html
-  contact.html
-  styles.css
-  assets/
-    workspace.svg
-    semantic-page.svg
-    responsive-grid.svg
-    git-flow.svg
+  index.html        Dashboard and task workspace
+  projects.html     API documentation
+  contact.html      Admin panel
+  styles.css        Shared responsive styling
+  app.js            Browser app and API client
+  server.js         Local Node.js API and static server
+  package.json      npm scripts
+  data/db.json      Created automatically on first server run
 ```
 
-## What This Project Practices
+## API Routes
 
-- Semantic HTML: header, nav, main, section, article, aside, footer, and forms.
-- CSS styling: shared variables, typography, spacing, buttons, cards, and states.
-- Responsive layout: CSS Grid, Flexbox, fluid widths, and media queries.
-- Git workflow: initialize a repo, check status, stage files, and commit changes.
+- `GET /api/health`
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/auth/me`
+- `GET /api/tasks`
+- `POST /api/tasks`
+- `PATCH /api/tasks/:id`
+- `DELETE /api/tasks/:id`
+- `GET /api/categories`
+- `POST /api/categories`
+- `POST /api/tasks/:id/comments`
+- `GET /api/admin/users`
 
-## Open the Site
+## Notes
 
-Open `index.html` in a browser. The site uses plain HTML and CSS, so no build
-step or package install is required.
-
-## Basic Git Commands
-
-Run these from inside the `frontend-foundation` folder:
-
-```bash
-git init
-git status
-git config user.name "Your Name"
-git config user.email "you@example.com"
-git add index.html projects.html contact.html styles.css assets README.md
-git commit -m "Create frontend foundation pages"
-```
-
-After future edits:
-
-```bash
-git status
-git diff
-git add .
-git commit -m "Describe the change clearly"
-```
+This build uses only Node.js built-in modules so it runs immediately in this
+workspace. For production, replace JSON-file persistence with MongoDB/Mongoose,
+set a strong `JWT_SECRET`, serve behind HTTPS, and add audit logging for role
+changes.

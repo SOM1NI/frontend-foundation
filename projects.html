@@ -3,87 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects | Frontend Foundations</title>
+  <title>API Docs | TaskForge</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="index.html">Frontend Foundations</a>
+      <a class="brand" href="index.html">
+        <span class="brand-mark">TF</span>
+        <span>TaskForge</span>
+      </a>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="projects.html" aria-current="page">Projects</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html">Dashboard</a>
+        <a href="projects.html" aria-current="page">API Docs</a>
+        <a href="contact.html">Admin</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="page-intro">
-      <p class="eyebrow">Practice projects</p>
-      <h1>Small builds that strengthen real front-end habits.</h1>
+    <section class="page-intro docs-intro">
+      <p class="eyebrow">REST API</p>
+      <h1>Endpoints for todos, categories, comments, users, and roles.</h1>
       <p>
-        Each project below focuses on a different skill: structure, layout,
-        styling consistency, or responsive behavior.
+        The local server exposes JSON routes under <code>/api</code>. Run it with
+        <code>npm.cmd start</code>, then use bearer tokens from the login route for
+        protected operations.
       </p>
     </section>
 
-    <section class="section">
-      <div class="project-grid">
-        <article class="project-card">
-          <img src="assets/semantic-page.svg" alt="Wireframe of a semantic web page layout">
-          <div class="project-content">
-            <p class="tag">HTML</p>
-            <h2>Semantic Article Page</h2>
-            <p>
-              Create a page with header, main, article, aside, and footer
-              elements to practice readable document structure.
-            </p>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <img src="assets/responsive-grid.svg" alt="Responsive grid layout preview">
-          <div class="project-content">
-            <p class="tag">CSS Layout</p>
-            <h2>Responsive Card Grid</h2>
-            <p>
-              Build a grid of cards that shifts from one column on mobile to
-              multiple columns on wider screens.
-            </p>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <img src="assets/git-flow.svg" alt="Git workflow timeline with commits">
-          <div class="project-content">
-            <p class="tag">Git</p>
-            <h2>Tracked Website Update</h2>
-            <p>
-              Make a visual change, inspect the diff, stage files, and create a
-              commit with a short, descriptive message.
-            </p>
-          </div>
-        </article>
-      </div>
+    <section class="section docs-grid">
+      <article class="docs-card">
+        <span class="route-method post">POST</span>
+        <h2>/api/auth/register</h2>
+        <p>Create a user account with name, email, and password. New accounts receive the member role.</p>
+      </article>
+      <article class="docs-card">
+        <span class="route-method post">POST</span>
+        <h2>/api/auth/login</h2>
+        <p>Exchange credentials for a signed bearer token and the current user profile.</p>
+      </article>
+      <article class="docs-card">
+        <span class="route-method get">GET</span>
+        <h2>/api/tasks</h2>
+        <p>Return visible tasks with owner, status, category, priority, due date, and comments.</p>
+      </article>
+      <article class="docs-card">
+        <span class="route-method post">POST</span>
+        <h2>/api/tasks</h2>
+        <p>Create a task. Required body: <code>title</code>. Optional: <code>details</code>, <code>category</code>, <code>priority</code>, <code>dueDate</code>.</p>
+      </article>
+      <article class="docs-card">
+        <span class="route-method patch">PATCH</span>
+        <h2>/api/tasks/:id</h2>
+        <p>Update title, details, category, priority, due date, assignee, or completed state.</p>
+      </article>
+      <article class="docs-card">
+        <span class="route-method delete">DELETE</span>
+        <h2>/api/tasks/:id</h2>
+        <p>Delete a task owned by the signed-in user or by any user when the requester is an admin.</p>
+      </article>
+      <article class="docs-card">
+        <span class="route-method get">GET</span>
+        <h2>/api/categories</h2>
+        <p>Return category names and colors used for task grouping in the dashboard.</p>
+      </article>
+      <article class="docs-card">
+        <span class="route-method post">POST</span>
+        <h2>/api/tasks/:id/comments</h2>
+        <p>Attach a timestamped note to a task so status updates stay connected to the work item.</p>
+      </article>
+      <article class="docs-card">
+        <span class="route-method get">GET</span>
+        <h2>/api/admin/users</h2>
+        <p>Admin-only route for account audit views and role management surfaces.</p>
+      </article>
     </section>
 
-    <section class="section checklist-band">
+    <section class="section code-band">
       <div class="section-header">
-        <p class="eyebrow">Before each commit</p>
-        <h2>Quick project checklist</h2>
+        <p class="eyebrow">Example request</p>
+        <h2>Create a task from any JavaScript client.</h2>
       </div>
-      <ul class="checklist">
-        <li>Open each page in the browser and confirm links work.</li>
-        <li>Resize the browser to check the mobile and desktop layouts.</li>
-        <li>Run <code>git status</code> to see which files changed.</li>
-        <li>Commit only the files that belong to the current feature.</li>
-      </ul>
+      <pre class="code-sample"><code>const response = await fetch("/api/tasks", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`
+  },
+  body: JSON.stringify({
+    title: "Review sprint goals",
+    category: "Planning",
+    priority: "High",
+    dueDate: "2026-10-25"
+  })
+});
+
+const task = await response.json();</code></pre>
+    </section>
+
+    <section class="section schema-grid">
+      <article>
+        <p class="eyebrow">Task schema</p>
+        <h2>Designed for practical task-management flows.</h2>
+        <ul class="checklist compact-list">
+          <li><code>id</code>, <code>title</code>, <code>details</code></li>
+          <li><code>category</code>, <code>priority</code>, <code>dueDate</code></li>
+          <li><code>completed</code>, <code>ownerId</code>, <code>assignee</code></li>
+          <li><code>comments</code>, <code>createdAt</code>, <code>updatedAt</code></li>
+        </ul>
+      </article>
+      <article class="source-card">
+        <p class="eyebrow">Source reference</p>
+        <h2>Compatible with Todo List Node.js project briefs.</h2>
+        <p>
+          This build turns the project idea into a full local website and API. The original
+          source reference supplied for the brief is:
+        </p>
+        <a class="source-link" href="https://github.com/Ankit6098/Todo-List-nodejs">GitHub source</a>
+      </article>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Frontend Foundations. Built with semantic HTML and CSS.</p>
+    <p>&copy; 2026 TaskForge. API docs for the Todo List Node.js site.</p>
   </footer>
 </body>
 </html>

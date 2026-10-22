@@ -3,99 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frontend Foundations</title>
+  <title>TaskForge | Todo List API</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="index.html">Frontend Foundations</a>
+      <a class="brand" href="index.html">
+        <span class="brand-mark">TF</span>
+        <span>TaskForge</span>
+      </a>
       <div class="nav-links">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" aria-current="page">Dashboard</a>
+        <a href="projects.html">API Docs</a>
+        <a href="contact.html">Admin</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-content">
-        <p class="eyebrow">HTML, CSS, responsive layouts, and Git</p>
-        <h1>Build clear, responsive web pages from the ground up.</h1>
+    <section class="app-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Node.js task-management API</p>
+        <h1>Ship task, category, comment, and role workflows from one clean API.</h1>
         <p>
-          A focused practice site for learning how front-end files fit together,
-          how layouts adapt across screens, and how Git tracks your progress.
+          TaskForge gives product teams a ready todo backend and a polished dashboard
+          surface for creating, assigning, filtering, commenting on, and completing work.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="projects.html">View projects</a>
-          <a class="button secondary" href="#learning-path">Start learning</a>
+          <a class="button primary" href="#workspace">Open workspace</a>
+          <a class="button secondary" href="projects.html">View endpoints</a>
         </div>
       </div>
-    </section>
 
-    <section class="section" id="learning-path">
-      <div class="section-header">
-        <p class="eyebrow">Learning path</p>
-        <h2>Four core skills for a front-end foundation</h2>
-      </div>
-
-      <div class="feature-grid">
-        <article class="feature-card">
-          <span class="feature-number">01</span>
-          <h3>Structure pages with HTML</h3>
-          <p>
-            Use headings, landmarks, links, lists, forms, and meaningful content
-            sections so pages are easy to read and maintain.
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <span class="feature-number">02</span>
-          <h3>Style with CSS</h3>
-          <p>
-            Control spacing, color, typography, borders, and reusable classes
-            through one shared stylesheet.
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <span class="feature-number">03</span>
-          <h3>Design responsive layouts</h3>
-          <p>
-            Combine CSS Grid, Flexbox, fluid widths, and media queries so each
-            page works on phones, tablets, and desktops.
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <span class="feature-number">04</span>
-          <h3>Manage work with Git</h3>
-          <p>
-            Track file changes, write useful commit messages, and keep a simple
-            project history as features are added.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section accent-band">
-      <div class="split-layout">
+      <aside class="hero-metrics" aria-label="API summary">
         <div>
-          <p class="eyebrow">Practice rhythm</p>
-          <h2>Build one small feature, then commit it.</h2>
+          <span class="metric-value">14</span>
+          <span class="metric-label">REST routes</span>
         </div>
-        <p>
-          A healthy beginner workflow is simple: edit a page, check the browser,
-          refine the CSS, then record the change with Git. Repeating that loop
-          turns front-end practice into visible progress.
-        </p>
+        <div>
+          <span class="metric-value">4</span>
+          <span class="metric-label">role levels</span>
+        </div>
+        <div>
+          <span class="metric-value">JWT</span>
+          <span class="metric-label">signed auth</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section product-strip" aria-label="Core capabilities">
+      <article>
+        <span class="capability-icon">01</span>
+        <h2>Task CRUD</h2>
+        <p>Create, edit, complete, restore, and delete todos through the app or JSON API.</p>
+      </article>
+      <article>
+        <span class="capability-icon">02</span>
+        <h2>Categories</h2>
+        <p>Group tasks by project, sprint, team, or personal focus area.</p>
+      </article>
+      <article>
+        <span class="capability-icon">03</span>
+        <h2>Comments</h2>
+        <p>Keep updates attached to the task instead of scattered through messages.</p>
+      </article>
+      <article>
+        <span class="capability-icon">04</span>
+        <h2>Roles</h2>
+        <p>Use member, manager, and admin scopes for everyday product workflows.</p>
+      </article>
+    </section>
+
+    <section class="workspace-shell" id="workspace">
+      <div class="workspace-header">
+        <div>
+          <p class="eyebrow">Live workspace</p>
+          <h2>Plan today, protect the backlog, and close the loop.</h2>
+        </div>
+        <div class="status-pill" id="connection-status">Checking API</div>
+      </div>
+
+      <div class="app-layout">
+        <aside class="sidebar-panel">
+          <div class="profile-card">
+            <span class="avatar" id="user-avatar">A</span>
+            <div>
+              <strong id="user-name">Admin User</strong>
+              <span id="user-role">admin</span>
+            </div>
+          </div>
+
+          <form class="auth-form" id="auth-form">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" value="admin@taskforge.dev" autocomplete="email">
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" value="admin123" autocomplete="current-password">
+
+            <div class="button-row">
+              <button class="button compact primary" type="submit" data-auth-action="login">Log in</button>
+              <button class="button compact secondary-dark" type="button" id="register-button">Register</button>
+            </div>
+          </form>
+
+          <div class="sidebar-block">
+            <h3>Categories</h3>
+            <ul class="category-list" id="category-list"></ul>
+          </div>
+        </aside>
+
+        <section class="task-panel" aria-labelledby="task-panel-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Task board</p>
+              <h2 id="task-panel-title">Open work</h2>
+            </div>
+            <div class="filter-group" aria-label="Task filters">
+              <button class="filter-button active" type="button" data-filter="all">All</button>
+              <button class="filter-button" type="button" data-filter="active">Active</button>
+              <button class="filter-button" type="button" data-filter="completed">Done</button>
+            </div>
+          </div>
+
+          <form class="task-form" id="task-form">
+            <div class="form-grid">
+              <label>
+                <span>Task title</span>
+                <input name="title" type="text" placeholder="Draft onboarding checklist" required>
+              </label>
+              <label>
+                <span>Category</span>
+                <select name="category" id="category-select"></select>
+              </label>
+              <label>
+                <span>Priority</span>
+                <select name="priority">
+                  <option>Medium</option>
+                  <option>High</option>
+                  <option>Low</option>
+                </select>
+              </label>
+              <label>
+                <span>Due date</span>
+                <input name="dueDate" type="date">
+              </label>
+            </div>
+            <label>
+              <span>Details</span>
+              <textarea name="details" rows="3" placeholder="Add context, owner notes, or acceptance criteria"></textarea>
+            </label>
+            <button class="button primary" type="submit">Add task</button>
+          </form>
+
+          <div class="task-list" id="task-list" aria-live="polite"></div>
+        </section>
+
+        <aside class="insight-panel">
+          <div class="stat-grid">
+            <div>
+              <span class="stat-value" id="total-count">0</span>
+              <span class="stat-label">Total</span>
+            </div>
+            <div>
+              <span class="stat-value" id="done-count">0</span>
+              <span class="stat-label">Done</span>
+            </div>
+            <div>
+              <span class="stat-value" id="active-count">0</span>
+              <span class="stat-label">Active</span>
+            </div>
+          </div>
+
+          <div class="api-preview">
+            <div class="panel-heading compact-heading">
+              <h3>Latest API response</h3>
+              <span id="response-method">GET</span>
+            </div>
+            <pre id="api-response">{"status":"ready"}</pre>
+          </div>
+
+          <form class="comment-form" id="comment-form">
+            <h3>Task comment</h3>
+            <label>
+              <span>Task</span>
+              <select name="taskId" id="comment-task-select"></select>
+            </label>
+            <label>
+              <span>Comment</span>
+              <textarea name="body" rows="3" placeholder="Add a quick status update"></textarea>
+            </label>
+            <button class="button secondary-dark" type="submit">Post comment</button>
+          </form>
+        </aside>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Frontend Foundations. Built with semantic HTML and CSS.</p>
+    <p>&copy; 2026 TaskForge. Built with Node.js, signed-token auth, and a responsive dashboard.</p>
   </footer>
 </body>
 </html>
